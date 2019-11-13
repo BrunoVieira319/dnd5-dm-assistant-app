@@ -1,0 +1,26 @@
+.CharacterImg {
+    height: 250px;
+    object-fit: cover;
+    object-position: 50% 10%;
+}
+
+.ColButtons {
+    padding-left: 0 !important;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.btn {
+    font-size: 22px !important;
+    padding: 0 !important;
+    margin-bottom: 2px;
+}
+
+.ColData {
+    padding-right: 0 !important;
+}
+
+.progress {
+    margin-bottom: 5px;
+}

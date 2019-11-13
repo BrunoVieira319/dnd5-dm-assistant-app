@@ -5,26 +5,34 @@ const CharactersContext = createContext({});
 
 const CharactersProvider = component => {
     const [characters, setCharacters] = useState([]);
+    const [hp, setHp] = useState("");
 
     useEffect(() => {
-        const source = axios.CancelToken.source();
-
-        const fetchCharacters = async() => {
-            const response = await axios.get(`http://localhost:8000/characters`, {
-                cancelToken: source.token});
-
-            if (response.status === 200) {
-                setCharacters(response.data)
-            }
-        };
-
-        fetchCharacters();
-        return () => source.cancel();
+        axios.get(`http://localhost:8000/characters`)
+            .then(response => setCharacters(response.data));
     }, []);
 
-    return(
+    const handleHp = e => setHp(e.target.value);
+
+    const changeHp = id => {
+        axios.put(`http://localhost:8000/characters/${id}/hp/${hp}`)
+            .then(response => {
+                let i = characters.findIndex(c => c.id === id);
+                let charactersCopy = characters;
+                charactersCopy[i] = response.data;
+                setCharacters(charactersCopy);
+                setHp("")
+            });
+    };
+
+    return (
         <CharactersContext.Provider
-            value={{characters}}
+            value={{
+                characters,
+                hp,
+                handleHp,
+                changeHp
+            }}
         >
             {component.children}
         </CharactersContext.Provider>

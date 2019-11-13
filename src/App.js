@@ -4,19 +4,28 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Nav, Navbar} from "react-bootstrap";
 import Link from "./components/ResetLink"
 import Characters from "./components/Characters"
+import CharacterForm from "./components/CharacterForm";
 
 function App() {
     return (
         <Router>
-            <Navbar className="Navbar" bg="info">
+            <Navbar className="Navbar">
                 <Nav>
-                    <Nav.Item>
-                        <Link to="/characters">Characters</Link>
-                    </Nav.Item>
+                    <Link to="/characters">
+                        <Nav.Item>
+                            Characters
+                        </Nav.Item>
+                    </Link>
+                    <Link to="/character/new">
+                        <Nav.Item>
+                            Create new character
+                        </Nav.Item>
+                    </Link>
                 </Nav>
             </Navbar>
 
             <Route path="/characters" component={Characters}/>
+            <Route path="/character/new" component={CharacterForm}/>
         </Router>
     );
 }
