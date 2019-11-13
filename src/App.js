@@ -5,6 +5,7 @@ import {Nav, Navbar} from "react-bootstrap";
 import Link from "./components/ResetLink"
 import Characters from "./components/Characters"
 import CharacterForm from "./components/CharacterForm";
+import CharacterNotes from "./components/CharacterNotes";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 </Nav>
             </Navbar>
 
+            <Route path="/character/:id/notes" exact component={CharacterNotes}/>
             <Route path="/characters" component={Characters}/>
             <Route path="/character/new" component={CharacterForm}/>
         </Router>

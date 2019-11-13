@@ -1,5 +1,6 @@
 import React from "react"
 import "../style/Characters.css"
+import Link from "./ResetLink"
 import {Button, Card, Col, Container, FormControl, InputGroup, ProgressBar, Row} from "react-bootstrap";
 import {CharactersProvider, CharactersContext} from "../contexts/CharactersContext";
 import {FaUserCog, FaMedrt} from "react-icons/fa";
@@ -8,7 +9,9 @@ const CharacterCard = props => {
     let c = props.character;
     return (
         <Card>
-            <Card.Img src={c.image} className="CharacterImg"/>
+            <Link to={`/character/${c.id}/notes`}>
+                <Card.Img src={c.image} className="CharacterImg"/>
+            </Link>
             <Card.Body>
                 <Row>
                     <Col sm="9" className="ColData">
